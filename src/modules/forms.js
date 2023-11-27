@@ -18,7 +18,7 @@ const forms = () => {
 	const postData = async (url, data) => {
 		document.querySelector('.status').textContent = messages.loading;
 
-		let result = await fetch(url, {
+		const result = await fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const forms = () => {
 		form.addEventListener('submit', e => {
 			e.preventDefault();
 
-			let statusMessage = document.createElement('div');
+			const statusMessage = document.createElement('div');
 			statusMessage.classList.add('status');
 			form.append(statusMessage);
 
