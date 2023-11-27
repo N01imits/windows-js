@@ -50,7 +50,7 @@ const forms = () => {
 			const formData = new FormData(form);
 			const jsonData = formDataToJson(formData);
 
-			postData('http://localhost:3000/api/data', jsonData)
+			postData('https://postsimpleserver.onrender.com/api/data', jsonData)
 				.then(result => {
 					console.log(result);
 					statusMessage.textContent = messages.success;
