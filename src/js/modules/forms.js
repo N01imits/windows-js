@@ -66,4 +66,4 @@ const forms = () => {
 	});
 };
 
-export default forms;
+export { forms };

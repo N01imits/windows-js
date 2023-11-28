@@ -47,4 +47,4 @@ const tabs = ({
 	header.addEventListener('click', checkPressedButton);
 };
 
-export default tabs;
+export { tabs };
