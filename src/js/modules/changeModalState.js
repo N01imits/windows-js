@@ -18,13 +18,7 @@ const changeModalState = state => {
 						state[property] = i;
 						break;
 					case 'INPUT':
-						if (element.getAttribute('type') === 'radio') {
-							i === 0
-								? (state[property] = 'Холодное')
-								: (state[property] = 'Теплое');
-						} else {
-							state[property] = element.value;
-						}
+						state[property] = element.value;
 						break;
 					case 'SELECT':
 						state[property] = element.value;
