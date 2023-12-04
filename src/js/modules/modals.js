@@ -1,4 +1,4 @@
-const modals = () => {
+export const modals = () => {
 	function bindModal({
 		triggerSelector,
 		modalSelector,
@@ -94,5 +94,3 @@ const modals = () => {
 
 	showModalByTime('.popup', 60000);
 };
-
-export { modals };

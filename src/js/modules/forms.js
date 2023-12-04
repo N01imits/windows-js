@@ -1,6 +1,6 @@
 import { checkNumInputs } from './checkNumInputs.js';
 
-const forms = state => {
+export const forms = state => {
 	const forms = document.querySelectorAll('form');
 	const inputs = document.querySelectorAll('input');
 
@@ -68,5 +68,3 @@ const forms = state => {
 		});
 	});
 };
-
-export { forms };

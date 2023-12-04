@@ -1,4 +1,4 @@
-const tabs = ({
+export const tabs = ({
 	headerSelector,
 	tabSelector,
 	contentSelector,
@@ -46,5 +46,3 @@ const tabs = ({
 	header.addEventListener('keypress', checkPressedButton);
 	header.addEventListener('click', checkPressedButton);
 };
-
-export { tabs };
