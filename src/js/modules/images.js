@@ -15,6 +15,7 @@ export const images = () => {
 		const target = e.target;
 
 		if (target && target.classList.contains('preview')) {
+			document.body.style.overflow = 'hidden';
 			imgPopup.style.display = 'flex';
 			const path = target.parentNode.getAttribute('href');
 			bigImage.style.width = '50rem';
@@ -23,8 +24,12 @@ export const images = () => {
 			bigImage.setAttribute('src', path);
 		}
 
+		if (target && target.matches('div.popup')) {
+			imgPopup.style.display = 'none';
+		}
+
 		document.addEventListener('keydown', e => {
-			if ((target && target.matches('div.popup')) || e.key === 'Escape') {
+			if (e.key === 'Escape') {
 				imgPopup.style.display = 'none';
 			}
 		});
