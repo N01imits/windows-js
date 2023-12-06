@@ -9,21 +9,25 @@ export const modals = () => {
 		const modal = document.querySelector(modalSelector);
 		const close = document.querySelector(closeSelector);
 		const windows = document.querySelectorAll('[data-modal]');
+		const scroll = calcScroll();
 
 		const openModal = () => {
 			modal.style.display = 'block';
 			document.body.style.overflow = 'hidden';
+			document.body.style.marginRight = `${scroll}px`;
 		};
 
 		const closeAllPopupWindows = () => {
 			windows.forEach(window => {
 				window.style.display = 'none';
+				document.body.style.marginRight = `0px`;
 			});
 		};
 
 		const closeModal = () => {
 			modal.style.display = 'none';
 			document.body.style.overflow = '';
+			document.body.style.marginRight = `0px`;
 		};
 
 		triggers.forEach(trigger => {
@@ -60,6 +64,21 @@ export const modals = () => {
 		}, time);
 	};
 
+	function calcScroll() {
+		const div = document.createElement('div');
+
+		div.style.width = '50px';
+		div.style.height = '50px';
+		div.style.overflowY = 'scroll';
+		div.style.visibility = 'hidden';
+
+		document.body.appendChild(div);
+		const scrollWidth = div.offsetWidth - div.clientWidth;
+		div.remove();
+
+		return scrollWidth;
+	}
+
 	bindModal({
 		triggerSelector: '.popup_engineer_btn',
 		modalSelector: '.popup_engineer',
@@ -92,5 +111,5 @@ export const modals = () => {
 		closeClickOverlay: false,
 	});
 
-	showModalByTime('.popup', 60000);
+	showModalByTime('.popup[data-modal]', 60000);
 };
