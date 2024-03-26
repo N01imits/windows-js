@@ -1,4 +1,5 @@
 export const modals = () => {
+	let isModalOpen = false;
 	function bindModal({
 		triggerSelector,
 		modalSelector,
@@ -15,12 +16,14 @@ export const modals = () => {
 			modal.style.display = 'block';
 			document.body.style.overflow = 'hidden';
 			document.body.style.marginRight = `${scroll}px`;
+			isModalOpen = true;
 		};
 
 		const closeAllPopupWindows = () => {
 			windows.forEach(window => {
 				window.style.display = 'none';
 				document.body.style.marginRight = `0px`;
+				isModalOpen = false;
 			});
 		};
 
@@ -28,6 +31,7 @@ export const modals = () => {
 			modal.style.display = 'none';
 			document.body.style.overflow = '';
 			document.body.style.marginRight = `0px`;
+			isModalOpen = false;
 		};
 
 		triggers.forEach(trigger => {
@@ -59,8 +63,11 @@ export const modals = () => {
 
 	const showModalByTime = (selector, time) => {
 		setTimeout(() => {
-			document.querySelector(selector).style.display = 'block';
-			document.body.style.overflow = 'hidden';
+			if (!isModalOpen) {
+				document.querySelector(selector).style.display = 'block';
+				document.body.style.overflow = 'hidden';
+				isModalOpen = true;
+			}
 		}, time);
 	};
 
@@ -111,5 +118,5 @@ export const modals = () => {
 		closeClickOverlay: false,
 	});
 
-	showModalByTime('.popup[data-modal]', 60000);
+	showModalByTime('.popup[data-modal]', 5000);
 };
